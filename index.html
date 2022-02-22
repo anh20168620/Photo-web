@@ -13,6 +13,7 @@
 
 <body>
     <div class="main">
+        <!-- Sidebar PC -->
         <div class="sidebar">
             <img src="./assets/images/avatar_smoke.jpg" alt="" class="sidebar-avatar">
             <ul class="sidebar-list">
@@ -30,7 +31,32 @@
                 </li>
             </ul>
         </div>
+
         <div class="body">
+            <!-- Sidebar tablet -->
+            <label for="sidebar-mobile-checkbox" class="sidebar-mobile-btn"><i class="fa-solid fa-bars"></i></label>
+            <input type="checkbox" hidden id="sidebar-mobile-checkbox" class="sidebar-mobile-input">
+            <label for="sidebar-mobile-checkbox" class="sidebar-mobile-overlay"></label>
+            <div class="sidebar-mobile">
+                <label for="sidebar-mobile-checkbox" class="sidebar-mobile-close"><i class="fa-solid fa-xmark"></i></label>
+                <img src="./assets/images/avatar_smoke.jpg" alt="" class="sidebar-mobile-avatar">
+                <ul class="sidebar-mobile-list">
+                    <li class="sidebar-mobile-item">
+                        <a href="#" class="sidebar-mobile-item_text"><i class="fa-solid fa-house-chimney"></i> Home</a>
+                    </li>
+                    <li class="sidebar-mobile-item">
+                        <a href="#about" class="sidebar-mobile-item_text"><i class="fa-solid fa-user-tie"></i> About</a>
+                    </li>
+                    <li class="sidebar-mobile-item">
+                        <a href="#photo" class="sidebar-mobile-item_text"><i class="fa-solid fa-images"></i> Photo</a>
+                    </li>
+                    <li class="sidebar-mobile-item">
+                        <a href="#contact" class="sidebar-mobile-item_text"><i class="fa-solid fa-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+
             <div class="body-container">
                 <div id="home">
                     <h1 class="home-title">I'm John Doe.</h1>
@@ -452,15 +478,25 @@
                 </div>
             </div>
         </div>
+        <div class="modal-image">
+            <div class="modal-image-container">
+                <img src="" alt="" class="photo-item-js">
+            </div>
+        </div>
     </div>
+
+
     <script>
         //Declare variable
         const signUps = document.querySelectorAll('.price-sign-up__btn')
         const modal = document.querySelector('.modal')
         const modalClose = document.querySelector('.modal-close')
         const modalContainer = document.querySelector('.modal-container')
-
-        // Function
+        const imgs = document.querySelectorAll('.photo-item')
+        const modalImg = document.querySelector('.modal-image')
+        const modalImageContainer = document.querySelector('.modal-image-container')
+        const photoItemJs = document.querySelector('.photo-item-js')
+            // Function
         function showSignUp() {
             modal.classList.add('open')
         }
@@ -469,6 +505,14 @@
             modal.classList.remove('open')
         }
 
+        function imageFullSize(img) {
+            modalImg.classList.add('open');
+            photoItemJs.src = `${img.src}`;
+        }
+
+        function closeImgFullSize() {
+            modalImg.classList.remove('open')
+        }
         // Add even
         for (const signUp of signUps) {
             signUp.addEventListener('click', showSignUp)
@@ -476,6 +520,16 @@
         modalClose.addEventListener('click', closeSignUp)
         modal.addEventListener('click', closeSignUp)
         modalContainer.addEventListener('click', function() {
+            event.stopPropagation()
+        })
+
+        for (const img of imgs) {
+            img.addEventListener('click', function() {
+                imageFullSize(img)
+            });
+        }
+        modalImg.addEventListener('click', closeImgFullSize)
+        modalImageContainer.addEventListener('click', function() {
             event.stopPropagation()
         })
     </script>

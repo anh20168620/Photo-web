@@ -73,6 +73,99 @@
     background-color: #000;
 }
 
+
+/* Sidebar Tablet */
+
+.sidebar-mobile-btn {
+    font-size: 28px;
+    color: #fff;
+    display: none;
+}
+
+.sidebar-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    animation: fadeIn 0.2s linear;
+}
+
+.sidebar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background-color: #222;
+    transform: translateX(-100%);
+    transition: all 0.2s linear;
+    opacity: 0;
+}
+
+.sidebar-mobile-item {
+    padding: 25px 50px;
+}
+
+.sidebar-mobile-item:hover {
+    cursor: pointer;
+    background-color: #000;
+}
+
+.sidebar-mobile-item_text {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.sidebar-mobile-input:checked~.sidebar-mobile-overlay {
+    display: block;
+}
+
+.sidebar-mobile-input:checked~.sidebar-mobile {
+    transform: translateX(0);
+    opacity: 1;
+    display: block;
+}
+
+.sidebar-mobile-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 16px;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.sidebar-mobile-close:hover {
+    cursor: pointer;
+    background-color: #ccc;
+    color: #000;
+}
+
+.sidebar-mobile-list {
+    list-style: none;
+}
+
+.sidebar-mobile-avatar {
+    width: 70%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/*  */
+
 .body-container {
     padding: 32px 0 64px 0;
     margin: 0 140px;
@@ -215,7 +308,6 @@
     width: calc(50% - 8px);
     background-color: #fff;
     color: #000;
-    opacity: 0.6;
 }
 
 .price-table-content:hover {
@@ -305,11 +397,13 @@
 
 .photo-list {
     width: calc(50% - 8px);
+    overflow: hidden;
 }
 
 .photo-item {
     width: 100%;
     margin-bottom: 5px;
+    transition: all 0.5s ease-in-out;
 }
 
 .photo-item:hover {
@@ -413,10 +507,6 @@
     display: none;
 }
 
-.open {
-    display: block;
-}
-
 .modal-container {
     text-align: left;
     margin: 30px 520px;
@@ -502,4 +592,112 @@ a {
     padding: 8px 16px;
     display: block;
     margin: auto;
+}
+
+.modal-image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+.modal-image-container {
+    margin: auto;
+    width: 800px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-item-js {
+    width: 100%;
+}
+
+.open {
+    display: block;
+}
+
+
+/* Mobile: max-width < 740px */
+
+@media screen and (max-width: 739px) {
+    .sidebar {
+        display: none;
+    }
+    .body {
+        margin-left: 0;
+    }
+    .body-container {
+        margin: 0 10px;
+    }
+    .home-title {
+        font-size: 24px;
+    }
+    .skills-other-list {
+        flex-direction: column;
+    }
+    .btn-download {
+        padding: 6px 12px;
+        margin-bottom: 40px;
+    }
+    .price-table {
+        flex-direction: column;
+    }
+    .price-table-content {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .reputation-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    .reputation-name,
+    .reputation-comment {
+        margin: 0;
+        font-size: 16px;
+    }
+    .modal-container {
+        margin: 30px 34px;
+    }
+    .modal-image {
+        display: none;
+    }
+    .sidebar-mobile-btn {
+        display: block;
+        position: fixed;
+        margin-left: -20px;
+    }
+}
+
+
+/* Tablet: min-width: 740px and max-width: 1024px */
+
+@media screen and (min-width: 740px) and (max-width: 1023px) {
+    .sidebar {
+        display: none;
+    }
+    .body {
+        margin-left: 0;
+    }
+    .body-container {
+        margin: 0px 90px;
+    }
+    .modal-container {
+        margin: 55px 114px;
+    }
+    .photo-item-js {
+        margin-bottom: 300px;
+        width: 100%;
+    }
+    .modal-image {
+        display: none;
+    }
+    .sidebar-mobile-btn {
+        display: block;
+        position: fixed;
+    }
 }
